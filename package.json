@@ -1,0 +1,30 @@
+{
+  "name": "generator-web-starter-react",
+  "version": "0.1.0",
+  "license": "GPL-3.0",
+  "description": "A React yeoman sub-generator for web-starter",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/forumone/generator-web-starter-react",
+  "bugs": "https://github.com/forumone/generator-web-starter-react/issues",
+  "author": {
+    "name": "Forum One",
+    "email": "support@forumone.com",
+    "url": "https://github.com/forumone"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:forumone/generator-web-starter-react.git"
+  },
+  "files": [
+    "web-starter"
+  ],
+  "webStarter": {
+    "category": "Platform",
+    "name": "React"
+  },
+  "dependencies": {
+    "yeoman-generator": "^0.23.4"
+  }
+}

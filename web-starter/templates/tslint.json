@@ -1,0 +1,137 @@
+{
+  "rules": {
+    // TypeScript-specific
+    "no-any": true,
+    "no-inferrable-types": true,
+    "no-parameter-reassignment": true,
+    "no-var-requires": true,
+    "typedef-whitespace": {
+      "severity": "error",
+      "options": [
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ]
+    },
+
+    // Functionality
+    "curly": true,
+    "forin": true,
+    "no-duplicate-super": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-invalid-template-strings": true,
+    "no-sparse-arrays": true,
+    "no-string-literal": true,
+    "no-switch-case-fall-through": true,
+    "no-this-assignment": true,
+    "no-unsafe-finally": true,
+    "no-unused-expression": true,
+    "triple-equals": true,
+    "typeof-compare": true,
+
+    // Maintainability
+    "eofline": true,
+    "indent": {
+      "options": [
+        "spaces",
+        2
+      ]
+    },
+    "linebreak-style": {
+      "options": "LF"
+    },
+    "max-line-length": {
+      "options": 100
+    },
+    "no-require-imports": true,
+    "prefer-const": true,
+    "trailing-comma": {
+      "options": {
+        "multiline": "always",
+        "singleline": "never"
+      }
+    },
+
+    // Style
+    "no-consecutive-blank-lines": true,
+    "no-irregular-whitespace": true,
+    "no-trailing-whitespace": true,
+    "number-literal-format": true,
+    "object-literal-key-quotes": {
+      "options": "as-needed"
+    },
+    "object-literal-shorthand": true,
+    "one-line": {
+      "options": [
+        "check-catch",
+        "check-else",
+        "check-finally",
+        "check-open-brace",
+        "check-whitespace"
+      ]
+    },
+    "one-variable-per-declaration": true,
+    "prefer-template": {
+      "options": "allow-single-concat"
+    },
+    "quotemark": {
+      "options": [
+        "single",
+        "jsx-double",
+        "avoid-escape",
+        "avoid-template"
+      ]
+    },
+    "semicolon": {
+      "options": [
+        "always"
+      ]
+    },
+    "space-before-function-paren": {
+      "options": {
+        "anonymous": "always",
+        "asyncArrow": "always",
+        "constructor": "never",
+        "method": "never",
+        "named": "never"
+      }
+    },
+    "space-within-parens": {
+      "options": 0
+    },
+    "type-literal-delimiter": true,
+    "variable-name": {
+      "options": [
+        "check-format",
+        "allow-pascal-case",
+        "ban-keywords"
+      ]
+    },
+    "whitespace": {
+      "options": [
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-module",
+        "check-separator",
+        "check-rest-spread",
+        "check-type",
+        "check-typecast",
+        "check-type-operator",
+        "check-preblock"
+      ]
+    }
+  }
+}
