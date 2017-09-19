@@ -13,6 +13,15 @@ module.exports = class ReactGenerator extends generator.Base {
     // this.options.addDevDependency(pkg.name, '~' + pkg.version);
   }
 
+  _readFile(filename) {
+    return this.fs.read(this.templatePath(filename));
+  }
+
+  configuring() {
+    this.options.addToGitignore(this._readFile('_gitignore'));
+    this.options.addToGitattributes(this._readFile('_gitattributes'));
+  }
+
   _copyFileAs(sourceFilename, targetFilename) {
     this.fs.copy(this.templatePath(sourceFilename), this.destinationPath(targetFilename));
   }
