@@ -1,5 +1,5 @@
 {
   default: function () {
-    return config;
+    return serverConfig;
   }
 }
