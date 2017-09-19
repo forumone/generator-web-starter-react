@@ -5,12 +5,29 @@ const generator = require('yeoman-generator');
 const pkg = require('../package.json');
 
 module.exports = class ReactGenerator extends generator.Base {
+  _getGrunt() {
+    const options = this.options;
+
+    if (typeof options.getPlugin === 'function') {
+      return options.getPlugin('grunt');
+    }
+  }
+
   _hasGrunt() {
-    return typeof this.options.getPlugin === 'function' && this.options.getPlugin('grunt');
+    return Boolean(this._getGrunt());
   }
 
   initializing() {
     // this.options.addDevDependency(pkg.name, '~' + pkg.version);
+  }
+
+  _readFile(filename) {
+    return this.fs.read(this.templatePath(filename));
+  }
+
+  configuring() {
+    this.options.addToGitignore(this._readFile('_gitignore'));
+    this.options.addToGitattributes(this._readFile('_gitattributes'));
   }
 
   _copyFileAs(sourceFilename, targetFilename) {
@@ -26,17 +43,33 @@ module.exports = class ReactGenerator extends generator.Base {
     this._copyFile('tsconfig.json');
     this._copyFile('tslint.json');
 
-    // TODO: Append to .gitattributes and .gitignore from web-starter
-
     this._copyFile('webpack.config.js');
     this._copyFile('src/index.tsx');
     this._copyFile('src/sass/styles.scss');
     this._copyFile('src/index.html');
 
-    if (this._hasGrunt()) {
-      this._copyFile('tasks/config/webpack.js');
-      this._copyFile('tasks/register/build.js');
-      // TODO: Override tasks/register/default.js from web-starter-grunt
+    const grunt = this._getGrunt();
+    if (grunt) {
+      const webpack = grunt.getGruntTask('webpack');
+      webpack.insertVariable('config', "require('../../webpack.config')");
+      webpack.insertConfig('webpack', this._readFile('tasks/config/webpack.js'));
+
+      const webpackDevServer = grunt.getGruntTask('webpack-dev-server');
+      // gruntfile-editor prepends code instead of appending it, so we have to put these variables
+      // in seemingly reverse order
+      webpackDevServer.insertVariable(
+        'serverConfig',
+        'Object.assign({ webpack: config }, config.devServer);'
+      );
+      webpackDevServer.insertVariable('config', "require('../../webpack.config')");
+      webpackDevServer.insertConfig(
+        "'webpack-dev-server'",
+        this._readFile('tasks/config/webpack-dev-server.js')
+      );
+
+      grunt.registerTask('build', 'webpack', 0);
+
+      grunt.registerTask('default', 'webpack-dev-server', 0);
     }
   }
 
