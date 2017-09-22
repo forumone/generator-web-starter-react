@@ -45,6 +45,7 @@ module.exports = class ReactGenerator extends generator.Base {
 
     this._copyFile('webpack.config.js');
     this._copyFile('src/index.tsx');
+    this._copyFile('src/ambient.d.ts');
     this._copyFile('src/sass/styles.scss');
     this._copyFile('src/index.html');
 
@@ -85,6 +86,9 @@ module.exports = class ReactGenerator extends generator.Base {
         'clean-webpack-plugin',
         'browser-sync',
         'browser-sync-webpack-plugin',
+        'imagemin-loader',
+        'imagemin-pngquant',
+        'imagemin-svgo',
       ],
       {
         'save-dev': true,
