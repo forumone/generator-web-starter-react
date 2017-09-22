@@ -118,7 +118,10 @@ module.exports = {
           use: [
             {
               loader: 'css-loader',
-              options: { sourceMap: !isProduction },
+              options: {
+                minimize: isProduction,
+                sourceMap: !isProduction,
+              },
             },
             {
               loader: 'postcss-loader',
