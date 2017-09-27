@@ -129,10 +129,10 @@ module.exports = class ReactGenerator extends generator.Base {
     // Needed for code splitting via import() expressions
     this.npmInstall('es6-promise', { 'save-dev': true });
 
-    this.npmInstall(['react@15', 'react-dom@15'], { 'save-dev': true });
+    this.npmInstall(['react', 'react-dom'], { 'save-dev': true });
 
     // Any change in an @types package is a patchlevel bump, so we install exactly to avoid version change issues
-    this.npmInstall(['@types/react@15', '@types/react-dom@15'], { 'save-dev': true, 'save-exact': true });
+    this.npmInstall(['@types/react', '@types/react-dom'], { 'save-dev': true, 'save-exact': true });
   }
 
   _installGruntWebpack() {
