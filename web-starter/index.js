@@ -45,6 +45,7 @@ module.exports = class ReactGenerator extends generator.Base {
 
     this._copyFile('webpack.config.js');
     this._copyFile('src/index.tsx');
+    this._copyFile('src/polyfills.ts');
     this._copyFile('src/sass/styles.scss');
     this._copyFile('src/index.html');
 
@@ -124,7 +125,10 @@ module.exports = class ReactGenerator extends generator.Base {
     );
   }
 
-  _installReact() {
+  _installDependencies() {
+    // Needed for code splitting via import() expressions
+    this.npmInstall('es6-promise', { 'save-dev': true });
+
     this.npmInstall(['react@15', 'react-dom@15'], { 'save-dev': true });
 
     // Any change in an @types package is a patchlevel bump, so we install exactly to avoid version change issues
@@ -137,7 +141,7 @@ module.exports = class ReactGenerator extends generator.Base {
 
   install() {
     this._installToolchain();
-    this._installReact();
+    this._installDependencies();
 
     if (this._hasGrunt()) {
       this._installGruntWebpack();
