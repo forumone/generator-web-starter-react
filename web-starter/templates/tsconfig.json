@@ -10,6 +10,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 
-    "jsx": "react"
-  }
+    "jsx": "react",
+
+    "lib": [
+      "dom",
+      "es5",
+      "es2015.promise"
+    ]
+  },
+
+  "include": [
+    "src/**/*.tsx",
+    "src/**/*.ts"
+  ]
 }
