@@ -28,6 +28,9 @@ module.exports = class ReactGenerator extends generator.Base {
   configuring() {
     this.options.addToGitignore(this._readFile('_gitignore'));
     this.options.addToGitattributes(this._readFile('_gitattributes'));
+    this.options.addService('web', {
+      doc_root: 'public',
+    });
   }
 
   _copyFileAs(sourceFilename, targetFilename) {
