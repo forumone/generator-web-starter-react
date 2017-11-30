@@ -1,6 +1,6 @@
 {
   "name": "generator-web-starter-react",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "GPL-3.0",
   "description": "A React yeoman sub-generator for web-starter",
   "keywords": [
