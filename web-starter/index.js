@@ -99,12 +99,13 @@ module.exports = class ReactGenerator extends generator.Base {
       }
     );
 
-    // Install TypeScript with an exact version so as to avoid breaking changes (the save-dev option creates a caret range, which isn't what we want)
-    this.npmInstall(['typescript'], { 'save-dev': true, 'save-exact': true });
+    // Install both TypeScript and the helper tslib library with an exact version to avoid breaking changes
+    // (By default, --save-dev uses a caret range, which isn't what we want)
+    this.npmInstall(['typescript', 'tslib'], { 'save-dev': true, 'save-exact': true });
 
+    // TypeScript tooling
     this.npmInstall(
       [
-        // TypeScript tooling
         'awesome-typescript-loader',
         'tslint',
         'tslint-loader',
