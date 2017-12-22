@@ -70,7 +70,12 @@ module.exports = {
   devServer: {
     host: '0.0.0.0',
     port: 8000,
+
+    // Show errors in the browser
     overlay: true,
+
+    // Don't fall back to the filesystem during development
+    contentBase: false,
   },
 
   plugins: standardPlugins.concat(isProduction ? prodPlugins : devPlugins),
